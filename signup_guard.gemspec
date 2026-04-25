@@ -8,19 +8,29 @@ Gem::Specification.new do |spec|
   spec.authors = ["Jesper Christiansen"]
   spec.email = ["hi@jespr.com"]
 
-  spec.summary = "Layered signup abuse detection for Rails apps"
+  spec.summary = "Risk-score Rails signups and gate suspicious accounts before they cause damage."
   spec.description = <<~DESC
-    Captures every signup attempt with rich signals (honeypot, fingerprint, MX,
-    Turnstile, IP reputation, fingerprint reuse, IP burst), composes them into
-    a risk score, and optionally enforces outcomes (allow / review / block) at
-    the controller layer. Ships an admin UI for the captured data.
+    SignupGuard captures every signup attempt with a layered set of cheap
+    signals — honeypot, time-to-submit, FingerprintJS, MX records, Cloudflare
+    Turnstile, disposable-email lists, IP reputation, fingerprint reuse, and
+    IP-burst detection — and composes them into a single tunable risk score.
+    Ship it in shadow mode to build a baseline, then flip a credentials flag
+    to start silently blocking the worst attempts and routing the suspicious
+    ones into a review queue.
   DESC
   spec.homepage = "https://github.com/jespr/signup_guard"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.2.0"
 
+  spec.metadata = {
+    "homepage_uri" => spec.homepage,
+    "source_code_uri" => spec.homepage,
+    "changelog_uri" => "#{spec.homepage}/blob/main/CHANGELOG.md",
+    "rubygems_mfa_required" => "true"
+  }
+
   spec.files = Dir.chdir(__dir__) do
-    Dir["{app,config,db,lib,data}/**/*", "MIT-LICENSE", "README.md"]
+    Dir["{app,config,db,lib,data}/**/*", "MIT-LICENSE", "README.md", "CHANGELOG.md"]
   end
 
   spec.add_dependency "rails", ">= 7.1"
