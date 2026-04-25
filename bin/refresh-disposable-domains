@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Standalone script for gem maintainers: pulls the latest disposable email
+# domains list into data/disposable_email_domains.txt without booting Rails.
+# Host app users should run `bin/rails signup_guard:refresh_disposable_domains`
+# instead, which respects their configured path.
+
+require "net/http"
+require "fileutils"
+
+url = URI("https://disposable.github.io/disposable-email-domains/domains.txt")
+path = File.expand_path("../data/disposable_email_domains.txt", __dir__)
+
+body = Net::HTTP.get(url)
+if body.empty? || body.lines.size < 100
+  warn "Refusing to write: response looks empty or truncated (#{body.lines.size} lines)"
+  exit 1
+end
+
+FileUtils.mkdir_p(File.dirname(path))
+File.write(path, body)
+puts "Wrote #{body.lines.size} domains to #{path}"
