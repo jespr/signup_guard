@@ -1,0 +1,13 @@
+Description:
+    Installs SignupGuard into a Rails app.
+
+    Generates a config initializer, copies the gem's migrations into your
+    db/migrate, and adds a requires_review boolean to your User model.
+
+Examples:
+    bin/rails generate signup_guard:install
+    bin/rails generate signup_guard:install --user-class=Account
+    bin/rails generate signup_guard:install --skip-user-migration
+    bin/rails generate signup_guard:install --skip-stimulus
+    bin/rails generate signup_guard:install --requires-review-attribute=needs_review
+    bin/rails generate signup_guard:install --stimulus-path=app/javascript/src/controllers/signup_timer_controller.js
