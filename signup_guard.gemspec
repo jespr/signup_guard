@@ -40,4 +40,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec-rails", "~> 8.0"
   spec.add_development_dependency "webmock", "~> 3.0"
   spec.add_development_dependency "sqlite3", "~> 2.0"
+  spec.add_development_dependency "appraisal", "~> 2.5"
 end
