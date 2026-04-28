@@ -1,5 +1,7 @@
 # SignupGuard
 
+[![CI](https://github.com/jespr/signup_guard/actions/workflows/ci.yml/badge.svg)](https://github.com/jespr/signup_guard/actions/workflows/ci.yml)
+
 Layered signup-time + post-signup abuse detection for Rails apps.
 Captures every signup attempt with rich signals (honeypot, fingerprint, MX,
 Turnstile, IP reputation, fingerprint reuse, IP burst), composes them into
