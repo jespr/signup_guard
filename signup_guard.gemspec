@@ -24,8 +24,8 @@ Gem::Specification.new do |spec|
 
   spec.metadata = {
     "homepage_uri" => spec.homepage,
-    "source_code_uri" => spec.homepage,
     "changelog_uri" => "#{spec.homepage}/blob/main/CHANGELOG.md",
+    "bug_tracker_uri" => "#{spec.homepage}/issues",
     "rubygems_mfa_required" => "true"
   }
 
@@ -33,12 +33,11 @@ Gem::Specification.new do |spec|
     Dir["{app,config,db,lib,data}/**/*", "MIT-LICENSE", "README.md", "CHANGELOG.md"]
   end
 
-  spec.add_dependency "rails", ">= 7.1"
+  spec.add_dependency "rails", ">= 7.1", "< 9"
   spec.add_dependency "httparty", "~> 0.21"
   spec.add_dependency "mail", "~> 2.8"
 
-  spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency "webmock"
-  spec.add_development_dependency "mocha"
-  spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency "rspec-rails", "~> 8.0"
+  spec.add_development_dependency "webmock", "~> 3.0"
+  spec.add_development_dependency "sqlite3", "~> 2.0"
 end
