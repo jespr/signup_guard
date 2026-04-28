@@ -1,0 +1,22 @@
+version: 2
+updates:
+  # GitHub Actions versions — high value, low noise
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      actions:
+        patterns: ["*"]
+
+  # Gemspec dependencies (rails, httparty, mail, dev deps)
+  # No Gemfile.lock is committed, so this only proposes bumps to the
+  # version constraints in the gemspec itself.
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      gem-deps:
+        patterns: ["*"]
+    open-pull-requests-limit: 3
